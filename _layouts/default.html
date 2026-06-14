@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+  <meta property="og:type" content="{% if layout.name == 'post' %}article{% else %}website{% endif %}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%231C2B3A'/><text y='.9em' x='50%' text-anchor='middle' font-size='54' fill='%23C8891A'>⚓</text></svg>" />
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+</head>
+<body>
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="{{ '/' | relative_url }}" class="nav__logo">
+      <div class="nav__logo-mark">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm3-3H9v-1.5h6V13.5zm-.5-3H9.5C9.5 8.57 10.57 7.5 12 7.5s2.5 1.07 2.5 3z"/></svg>
+      </div>
+      <span class="nav__logo-text">Mariner's Memoir</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+      <li><a href="{{ '/blog.html' | relative_url }}" {% if page.url contains '/blog' or layout.name == 'post' %}class="active"{% endif %}>Writing</a></li>
+      <li><a href="{{ '/about.html' | relative_url }}" {% if page.url contains 'about' %}class="active"{% endif %}>About</a></li>
+      <li><a href="{{ '/#newsletter' | relative_url }}" class="nav__subscribe">Subscribe</a></li>
+    </ul>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <a href="{{ '/blog.html' | relative_url }}">Writing</a>
+    <a href="{{ '/about.html' | relative_url }}">About</a>
+    <a href="{{ '/#newsletter' | relative_url }}">Subscribe</a>
+  </div>
+</nav>
+
+{{ content }}
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a href="{{ '/' | relative_url }}" class="footer__logo">
+        <div class="footer__logo-mark">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm3-3H9v-1.5h6V13.5zm-.5-3H9.5C9.5 8.57 10.57 7.5 12 7.5s2.5 1.07 2.5 3z"/></svg>
+        </div>
+        <span class="footer__logo-text">Mariner's Memoir</span>
+      </a>
+      <p class="footer__tagline">Long-form thinking on leadership, AI, nonprofits, and ideas worth taking seriously.</p>
+    </div>
+    <div>
+      <div class="footer__col-title">Explore</div>
+      <div class="footer__links">
+        <a href="{{ '/blog.html' | relative_url }}">All Writing</a>
+        <a href="{{ '/about.html' | relative_url }}">About</a>
+        <a href="{{ '/#newsletter' | relative_url }}">Subscribe</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-title">Connect</div>
+      <div class="footer__links">
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">X / Twitter</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>&copy; {{ 'now' | date: "%Y" }} Mariner's Memoir. All rights reserved.</span>
+  </div>
+</footer>
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 15l7-7 7 7"/></svg>
+</button>
+<script src="{{ '/main.js' | relative_url }}"></script>
+</body>
+</html>
