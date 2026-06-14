@@ -1,14 +1,84 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mariner's Memoir — Admin</title>
-    <style>
-      body { margin: 0; font-family: system-ui, sans-serif; }
-    </style>
-  </head>
-  <body>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  </body>
-</html>
+---
+layout: default
+title: "Ideas, Opinions & Insights"
+---
+{% assign all_posts = site.posts %}
+{% assign featured = all_posts | first %}
+{% assign recent = all_posts | offset: 1 | limit: 5 %}
+
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">Dispatches from the field</div>
+      <h1>Thinking clearly in a noisy world.</h1>
+      <p>Long-form essays, sharp opinions, and curated ideas on leadership, nonprofit work, AI, and the art of building things that matter.</p>
+      <div class="hero__actions">
+        <a href="{{ '/blog.html' | relative_url }}" class="btn btn--primary">Explore Writing</a>
+        <a href="{{ '/about.html' | relative_url }}" class="btn btn--outline">About the Author</a>
+      </div>
+    </div>
+    {% if featured %}
+    {% assign fcat = site.data.categories[featured.category] %}
+    <div class="hero__featured">
+      <div class="hero__featured-label">Featured Essay</div>
+      <a href="{{ featured.url | relative_url }}" class="hero__card">
+        <span class="hero__card-tag">{{ fcat.label | default: featured.category }}</span>
+        <h3>{{ featured.title }}</h3>
+        <p>{{ featured.excerpt | strip_html | truncate: 160 }}</p>
+        <div class="hero__card-meta">
+          <span>{{ featured.date | date: "%B %-d, %Y" }}</span>
+          {% if featured.read_time %}<span>{{ featured.read_time }} read</span>{% endif %}
+        </div>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if recent.size > 0 %}
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-label">Recent Writing</div>
+        <h2>From the journal</h2>
+      </div>
+      <a href="{{ '/blog.html' | relative_url }}">View all essays</a>
+    </div>
+    <div class="articles-grid">
+      {% for post in recent %}
+      {% assign pcat = site.data.categories[post.category] %}
+      <a href="{{ post.url | relative_url }}" class="article-card" style="text-decoration:none;">
+        <div class="article-card__image-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <div class="article-card__body">
+          <span class="article-card__tag">{{ pcat.label | default: post.category }}</span>
+          <div class="article-card__title">{{ post.title }}</div>
+          <p class="article-card__excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+          <div class="article-card__meta">
+            <span class="article-card__date">{{ post.date | date: "%B %-d, %Y" }}</span>
+            {% if post.read_time %}<span class="article-card__read">{{ post.read_time }}</span>{% endif %}
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section--sm" id="newsletter">
+  <div class="container">
+    <div class="newsletter">
+      <div class="section-label" style="color:var(--amber-light);margin-bottom:12px;">Stay in the loop</div>
+      <h2>Join the crew</h2>
+      <p>New essays, videos, and curated links — delivered when ready. No filler.</p>
+      <form class="newsletter__form">
+        <input type="email" class="newsletter__input" placeholder="your@email.com" required />
+        <button type="submit" class="btn btn--primary">Subscribe</button>
+      </form>
+      <div class="newsletter__note">No spam. Unsubscribe any time.</div>
+    </div>
+  </div>
+</section>
