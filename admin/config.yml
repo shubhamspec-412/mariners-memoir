@@ -1,0 +1,47 @@
+backend:
+  name: github
+  repo: shubhamspec-412/mariners-memoir
+  branch: main
+  auth_type: implicit
+  app_id: PASTE_YOUR_GITHUB_OAUTH_CLIENT_ID_HERE
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    label_singular: "Post"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false}
+      - label: "Post Type"
+        name: "post_type"
+        widget: "select"
+        options:
+          - {label: "Essay / Article", value: "essay"}
+          - {label: "Video + Commentary", value: "video"}
+          - {label: "Curated Link", value: "curated"}
+        default: "essay"
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - {label: "Leadership", value: "leadership"}
+          - {label: "Nonprofit", value: "nonprofit"}
+          - {label: "AI & Tech", value: "ai"}
+          - {label: "Productivity", value: "productivity"}
+          - {label: "Opinion", value: "opinion"}
+          - {label: "Commentary", value: "commentary"}
+          - {label: "Video Analysis", value: "video"}
+      - {label: "Tags", name: "tags", widget: "list", allow_add: true}
+      - {label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary shown on cards (1-2 sentences)."}
+      - {label: "Read Time", name: "read_time", widget: "string", required: false, hint: "e.g. 8 min"}
+      - {label: "YouTube Video ID", name: "youtube_id", widget: "string", required: false, hint: "Video posts only — ID from YouTube URL"}
+      - {label: "External URL", name: "external_url", widget: "string", required: false, hint: "Curated link posts only"}
+      - {label: "Body", name: "body", widget: "markdown"}
