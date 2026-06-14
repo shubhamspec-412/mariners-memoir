@@ -1,56 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Writing — Mariner's Memoir</title>
-  <meta name="description" content="All essays, opinions, video commentary, and curated links from Mariner's Memoir." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%231C2B3A'/><text y='.9em' x='50%' text-anchor='middle' font-size='54' fill='%23C8891A'>⚓</text></svg>" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+---
+layout: default
+title: "Writing"
+description: "All essays, opinions, video commentary, and curated links from Mariner's Memoir."
+---
 
-<!-- ── NAV ────────────────────────────────────────────────── -->
-<nav class="nav">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">
-      <div class="nav__logo-mark">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm3-3H9v-1.5h6V13.5zm-.5-3H9.5C9.5 8.57 10.57 7.5 12 7.5s2.5 1.07 2.5 3z"/></svg>
-      </div>
-      <span class="nav__logo-text">Mariner's Memoir</span>
-    </a>
-    <ul class="nav__links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html" class="active">Writing</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="index.html#newsletter" class="nav__subscribe">Subscribe</a></li>
-    </ul>
-    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav__mobile">
-    <a href="index.html">Home</a>
-    <a href="blog.html">Writing</a>
-    <a href="about.html">About</a>
-    <a href="index.html#newsletter">Subscribe</a>
-  </div>
-</nav>
-
-<!-- ── PAGE HEADER ────────────────────────────────────────── -->
-<div style="background: var(--cream-dark); border-bottom: 1px solid var(--cream-border); padding: 48px 0;">
+<!-- Page Header -->
+<div style="background:var(--cream-dark);border-bottom:1px solid var(--cream-border);padding:48px 0;">
   <div class="container">
-    <div class="section-label" style="margin-bottom: 10px;">The Archive</div>
-    <h1 style="font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 8px;">All Writing</h1>
-    <p class="lead" style="max-width: 520px; margin-bottom: 0;">Essays, opinions, video commentary, and curated content — organised by theme.</p>
+    <div class="section-label" style="margin-bottom:10px;">The Archive</div>
+    <h1 style="font-size:clamp(1.75rem,3vw,2.5rem);margin-bottom:8px;">All Writing</h1>
+    <p class="lead" style="max-width:520px;margin-bottom:0;">Essays, opinions, video commentary, and curated content — organised by theme.</p>
   </div>
 </div>
 
-<!-- ── FILTERS + SEARCH ────────────────────────────────────── -->
-<div style="background: var(--white); border-bottom: 1px solid var(--cream-border); padding: 20px 0; position: sticky; top: 64px; z-index: 50;">
+<!-- Filters + Search -->
+<div style="background:var(--white);border-bottom:1px solid var(--cream-border);padding:20px 0;position:sticky;top:64px;z-index:50;">
   <div class="container">
-    <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: space-between;">
-
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;">
       <div class="filters">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="leadership">Leadership</button>
@@ -60,193 +26,66 @@
         <button class="filter-btn" data-filter="opinion">Opinion</button>
         <button class="filter-btn" data-filter="video">Video</button>
       </div>
-
-      <div class="search-bar" style="max-width: 300px;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
+      <div class="search-bar" style="max-width:300px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="searchInput" placeholder="Search essays…" aria-label="Search articles" />
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ── ARTICLE LIST ────────────────────────────────────────── -->
+<!-- Articles Grid -->
 <section class="section">
   <div class="container">
 
+    {% if site.posts.size > 0 %}
     <div class="articles-grid" id="articlesGrid">
+      {% for post in site.posts %}
+      {% assign pcat = site.data.categories[post.category] %}
+      {% assign cat_label = pcat.label | default: post.category %}
 
-      <!-- Article 1 -->
-      <a href="post.html" class="article-card" data-searchable data-category="leadership" style="text-decoration:none;">
+      <a href="{{ post.url | relative_url }}" class="article-card" data-searchable data-category="{{ post.category }}" style="text-decoration:none;">
         <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">Leadership</span>
-          <div class="article-card__title">Why Most Nonprofit Leaders Are Solving the Wrong Problem</div>
-          <p class="article-card__excerpt">We obsess over operational efficiency while ignoring whether we're targeting the right outcomes at all.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">June 10, 2026</span>
-            <span class="article-card__read">8 min</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 2 -->
-      <a href="post.html" class="article-card" data-searchable data-category="ai" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">AI &amp; Tech</span>
-          <div class="article-card__title">The Second Brain Trap: Why Capturing Everything Produces Nothing</div>
-          <p class="article-card__excerpt">You've spent three months cataloguing ideas and produced zero meaningful output. Here's where the system breaks down.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">June 8, 2026</span>
-            <span class="article-card__read">12 min</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 3 -->
-      <a href="post.html" class="article-card" data-searchable data-category="nonprofit" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">Nonprofit</span>
-          <div class="article-card__title">The Donor Relationship No One Teaches You About</div>
-          <p class="article-card__excerpt">The relationship that actually moves the needle looks nothing like the standard stewardship playbook.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">June 3, 2026</span>
-            <span class="article-card__read">7 min</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 4 -->
-      <a href="post.html" class="article-card" data-searchable data-category="opinion" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">Opinion</span>
-          <div class="article-card__title">AI Won't Replace Leaders. Complacent Leaders Will.</div>
-          <p class="article-card__excerpt">The conversation about AI displacement misses the real threat: leaders who use AI as an excuse to stop thinking.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">May 28, 2026</span>
-            <span class="article-card__read">6 min</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 5 -->
-      <a href="post.html" class="article-card" data-searchable data-category="productivity" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">Productivity</span>
-          <div class="article-card__title">The Calendar Audit That Changed How I Spend My Mornings</div>
-          <p class="article-card__excerpt">I tracked every hour for 30 days. What I found was uncomfortable — and immediately actionable.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">May 22, 2026</span>
-            <span class="article-card__read">5 min</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 6 -->
-      <a href="post.html" class="article-card" data-searchable data-category="nonprofit" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">Nonprofit</span>
-          <div class="article-card__title">What We Keep Getting Wrong About Impact Measurement</div>
-          <p class="article-card__excerpt">Metrics are not meaning. Confusing the two is the single most expensive mistake in the social sector.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">May 15, 2026</span>
-            <span class="article-card__read">9 min</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Video Article -->
-      <a href="post.html" class="article-card" data-searchable data-category="video" style="text-decoration:none;">
-        <div class="article-card__image-placeholder" style="position:relative;">
+          {% if post.post_type == 'video' %}
+          <div style="position:absolute;top:10px;right:10px;background:rgba(200,137,26,0.9);color:white;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:40px;">&#9654; Video</div>
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <div style="position:absolute; top:10px; right:10px; background: rgba(200,137,26,0.9); color:white; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding: 3px 8px; border-radius:40px;">▶ Video</div>
+          {% else %}
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          {% endif %}
         </div>
         <div class="article-card__body">
-          <span class="article-card__tag">Video Analysis</span>
-          <div class="article-card__title">McKinsey on Nonprofit Strategy — My Take</div>
-          <p class="article-card__excerpt">This McKinsey presentation gets a lot right but fundamentally misdiagnoses the root cause. Here's where they missed the human element.</p>
+          <span class="article-card__tag">{{ cat_label }}</span>
+          <div class="article-card__title">{{ post.title }}</div>
+          <p class="article-card__excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
           <div class="article-card__meta">
-            <span class="article-card__date">May 10, 2026</span>
-            <span class="article-card__read">Video + Essay</span>
+            <span class="article-card__date">{{ post.date | date: "%B %-d, %Y" }}</span>
+            {% if post.read_time %}<span class="article-card__read">{{ post.read_time }}</span>{% endif %}
           </div>
         </div>
       </a>
-
-      <!-- Article 8 -->
-      <a href="post.html" class="article-card" data-searchable data-category="leadership" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">Leadership</span>
-          <div class="article-card__title">The One Conversation You're Avoiding That Would Change Everything</div>
-          <p class="article-card__excerpt">Most leadership stagnation traces back to a single deferred conversation. Here's how to identify yours and what happens when you finally have it.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">May 5, 2026</span>
-            <span class="article-card__read">6 min</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 9 -->
-      <a href="post.html" class="article-card" data-searchable data-category="ai" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">AI &amp; Tech</span>
-          <div class="article-card__title">What Claude Taught Me About My Own Thinking Process</div>
-          <p class="article-card__excerpt">Six months of daily AI use revealed a pattern in my reasoning that I couldn't see without an external mirror.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">Apr 28, 2026</span>
-            <span class="article-card__read">10 min</span>
-          </div>
-        </div>
-      </a>
-
+      {% endfor %}
     </div>
 
-    <!-- No results -->
     <div id="noResults" class="no-results hidden">
       <h3>No results found</h3>
       <p>Try a different search term or clear your filters.</p>
     </div>
 
-    <!-- Pagination -->
-    <div class="pagination">
-      <a href="#" class="page-btn active">1</a>
-      <a href="#" class="page-btn">2</a>
-      <a href="#" class="page-btn">3</a>
-      <a href="#" class="page-btn" style="width:auto; padding: 0 16px;">Next →</a>
+    {% else %}
+    <div class="no-results">
+      <h3>No posts yet</h3>
+      <p>The first essay is coming soon. <a href="{{ '/#newsletter' | relative_url }}">Subscribe</a> to be notified.</p>
     </div>
+    {% endif %}
 
   </div>
 </section>
 
-<!-- ── NEWSLETTER ──────────────────────────────────────────── -->
+<!-- Newsletter -->
 <section class="section--sm" id="newsletter">
   <div class="container">
     <div class="newsletter">
-      <div class="section-label" style="color: var(--amber-light); margin-bottom: 12px;">Don't miss a post</div>
+      <div class="section-label" style="color:var(--amber-light);margin-bottom:12px;">Don't miss a post</div>
       <h2>Subscribe to the Memoir</h2>
       <p>New essays, video commentary, and curated content — straight to your inbox.</p>
       <form class="newsletter__form">
@@ -257,55 +96,3 @@
     </div>
   </div>
 </section>
-
-<!-- ── FOOTER ──────────────────────────────────────────────── -->
-<footer class="footer">
-  <div class="footer__inner">
-    <div class="footer__brand">
-      <a href="index.html" class="footer__logo">
-        <div class="footer__logo-mark">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm3-3H9v-1.5h6V13.5zm-.5-3H9.5C9.5 8.57 10.57 7.5 12 7.5s2.5 1.07 2.5 3z"/></svg>
-        </div>
-        <span class="footer__logo-text">Mariner's Memoir</span>
-      </a>
-      <p class="footer__tagline">Long-form thinking on leadership, AI, nonprofits, and ideas worth taking seriously.</p>
-    </div>
-    <div>
-      <div class="footer__col-title">Explore</div>
-      <div class="footer__links">
-        <a href="blog.html">All Writing</a>
-        <a href="blog.html">Leadership</a>
-        <a href="blog.html">Nonprofit</a>
-        <a href="blog.html">AI &amp; Technology</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer__col-title">Pages</div>
-      <div class="footer__links">
-        <a href="about.html">About</a>
-        <a href="index.html#newsletter">Subscribe</a>
-        <a href="#">Contact</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer__col-title">Connect</div>
-      <div class="footer__links">
-        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="#" target="_blank" rel="noopener">X / Twitter</a>
-        <a href="#">RSS Feed</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer__bottom">
-    <span>© 2026 Mariner's Memoir. All rights reserved.</span>
-    <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
-  </div>
-</footer>
-
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 15l7-7 7 7"/></svg>
-</button>
-
-<script src="main.js"></script>
-</body>
-</html>

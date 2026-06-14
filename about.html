@@ -1,71 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Mariner's Memoir</title>
-  <meta name="description" content="Shubham Kumar — nonprofit leader, 31, exploring the intersection of AI, leadership, productivity, and social impact." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%231C2B3A'/><text y='.9em' x='50%' text-anchor='middle' font-size='54' fill='%23C8891A'>⚓</text></svg>" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+---
+layout: default
+title: "About"
+description: "Shubham Kumar — nonprofit leader exploring the intersection of AI, leadership, productivity, and social impact."
+---
 
-<!-- ── NAV ────────────────────────────────────────────────── -->
-<nav class="nav">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">
-      <div class="nav__logo-mark">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm3-3H9v-1.5h6V13.5zm-.5-3H9.5C9.5 8.57 10.57 7.5 12 7.5s2.5 1.07 2.5 3z"/></svg>
-      </div>
-      <span class="nav__logo-text">Mariner's Memoir</span>
-    </a>
-    <ul class="nav__links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html">Writing</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="index.html#newsletter" class="nav__subscribe">Subscribe</a></li>
-    </ul>
-    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav__mobile">
-    <a href="index.html">Home</a>
-    <a href="blog.html">Writing</a>
-    <a href="about.html">About</a>
-    <a href="index.html#newsletter">Subscribe</a>
-  </div>
-</nav>
-
-<!-- ── ABOUT HERO ──────────────────────────────────────────── -->
+<!-- About Hero -->
 <section class="about-hero">
   <div class="about-hero__inner">
-    <!-- Avatar: Replace with <img src="your-photo.jpg" alt="Shubham Kumar"> -->
     <div class="about-hero__avatar">S</div>
-
     <div>
-      <div class="section-label" style="margin-bottom: 10px;">The person behind the writing</div>
+      <div class="section-label" style="margin-bottom:10px;">The person behind the writing</div>
       <h1 class="about-hero__name">Shubham Kumar</h1>
-      <div class="about-hero__tagline">Nonprofit Leader · AI Explorer · Structured Thinker</div>
-      <p class="about-hero__bio">
-        I'm 31, and I work in a nonprofit organisation in a leadership role. My day job involves strategy, teams, donors, and the constant pressure to prove impact in systems not designed for it.
-      </p>
-      <p class="about-hero__bio">
-        This site is where I think out loud. I write long-form essays on leadership, the honest failures and hard-won lessons from the social sector, the possibilities and limits of AI, and the craft of making better decisions over time.
-      </p>
-      <p class="about-hero__bio" style="margin-bottom: 0;">
-        I started Mariner's Memoir because I was frustrated by content that was either too academic to be useful or too surface-level to be interesting. I'm trying to write the thing I wish I could read.
-      </p>
-      <div class="about-hero__links" style="margin-top: 28px;">
+      <div class="about-hero__tagline">Nonprofit Leader &middot; AI Explorer &middot; Structured Thinker</div>
+      <p class="about-hero__bio">I'm 31, and I work in a nonprofit organisation in a leadership role. My day job involves strategy, teams, donors, and the constant pressure to prove impact in systems not designed for it.</p>
+      <p class="about-hero__bio">This site is where I think out loud. I write long-form essays on leadership, the honest failures and hard-won lessons from the social sector, the possibilities and limits of AI, and the craft of making better decisions over time.</p>
+      <p class="about-hero__bio" style="margin-bottom:0;">I started Mariner's Memoir because I was frustrated by content that was either too academic to be useful or too surface-level to be interesting. I'm trying to write the thing I wish I could read.</p>
+      <div class="about-hero__links" style="margin-top:28px;">
         <a href="#" target="_blank" rel="noopener" class="btn btn--slate btn--sm">LinkedIn</a>
         <a href="#" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">X / Twitter</a>
-        <a href="index.html#newsletter" class="btn btn--primary btn--sm">Subscribe to writing</a>
+        <a href="{{ '/#newsletter' | relative_url }}" class="btn btn--primary btn--sm">Subscribe to writing</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── STATS ───────────────────────────────────────────────── -->
+<!-- Stats -->
 <section class="section--sm">
   <div class="container">
     <div class="stats-strip">
@@ -78,7 +37,7 @@
         <div class="stat-item__label">Years in nonprofit leadership</div>
       </div>
       <div class="stat-item">
-        <div class="stat-item__number">50<span>+</span></div>
+        <div class="stat-item__number">{{ site.posts | size }}<span>+</span></div>
         <div class="stat-item__label">Essays published (and counting)</div>
       </div>
       <div class="stat-item">
@@ -89,154 +48,110 @@
   </div>
 </section>
 
-<!-- ── EXPERTISE ───────────────────────────────────────────── -->
-<section class="section" style="background: var(--cream-dark); border-top: 1px solid var(--cream-border); border-bottom: 1px solid var(--cream-border);">
+<!-- Expertise -->
+<section class="section" style="background:var(--cream-dark);border-top:1px solid var(--cream-border);border-bottom:1px solid var(--cream-border);">
   <div class="container">
-    <div class="text-center" style="margin-bottom: 48px;">
-      <div class="section-label" style="margin-bottom: 10px;">What I write about</div>
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="margin-bottom:10px;">What I write about</div>
       <h2>Areas of focus</h2>
       <hr class="divider divider--center" />
     </div>
-
     <div class="expertise-grid">
-
       <div class="expertise-card">
         <div class="expertise-card__icon">🧭</div>
         <h4>Nonprofit Leadership</h4>
         <p>The unwritten curriculum of leading in the social sector — donor dynamics, board relationships, theory of change, and the politics of impact.</p>
       </div>
-
       <div class="expertise-card">
         <div class="expertise-card__icon">🤖</div>
-        <h4>AI & Productivity</h4>
+        <h4>AI &amp; Productivity</h4>
         <p>How AI tools actually change knowledge work, where they fall short, and how to build systems that make you sharper — not just faster.</p>
       </div>
-
       <div class="expertise-card">
         <div class="expertise-card__icon">🎯</div>
         <h4>Strategic Thinking</h4>
         <p>Decision-making under uncertainty, mental models for complex problems, and the discipline of distinguishing signal from noise.</p>
       </div>
-
       <div class="expertise-card">
         <div class="expertise-card__icon">💬</div>
-        <h4>Opinion & Commentary</h4>
+        <h4>Opinion &amp; Commentary</h4>
         <p>Takes on ideas in the public sphere — books, talks, reports, and conversations worth engaging with seriously.</p>
       </div>
-
       <div class="expertise-card">
         <div class="expertise-card__icon">📺</div>
         <h4>Video Analysis</h4>
-        <p>Reactions and analysis of talks, presentations, and videos that deserve more than a surface-level watch. I watch so you can think.</p>
+        <p>Reactions and analysis of talks, presentations, and videos that deserve more than a surface-level watch.</p>
       </div>
-
       <div class="expertise-card">
         <div class="expertise-card__icon">🔗</div>
         <h4>Curated Reading</h4>
         <p>External links with my commentary — the articles, papers, and pieces that shaped my thinking, and why they're worth your time.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ── MY WRITING PHILOSOPHY ──────────────────────────────── -->
+<!-- Philosophy -->
 <section class="section">
   <div class="container--narrow">
-    <div class="section-label" style="margin-bottom: 12px;">Why I write</div>
-    <h2 style="margin-bottom: 28px;">The point of this</h2>
+    <div class="section-label" style="margin-bottom:12px;">Why I write</div>
+    <h2 style="margin-bottom:28px;">The point of this</h2>
     <hr class="divider" />
-
-    <div style="font-family: var(--font-reading); font-size: 1.08rem; line-height: 1.85; color: var(--text-body);">
-
+    <div style="font-family:var(--font-reading);font-size:1.08rem;line-height:1.85;color:var(--text-body);">
       <p>Writing is how I figure out what I actually think. The essays on this site aren't finished positions — they're the best version of my reasoning at the time I wrote them. Some will age poorly. I'm okay with that.</p>
-
       <p>I care about three things in writing: honesty, specificity, and usefulness. Generic insight is the enemy. If I can't tell you something concrete — a framing, a pattern, a real example — I don't publish it.</p>
-
       <p>I also try to write for people who are actually doing things, not people who are merely thinking about doing things. There's a difference. The reader I imagine is someone who runs something — a team, a program, an organisation — and is trying to do it better.</p>
-
-      <blockquote style="border-left: 3px solid var(--amber); margin: 2em 0; padding: 20px 28px; background: var(--amber-pale); border-radius: 0 var(--radius) var(--radius) 0; font-style: italic; color: var(--slate-mid);">
+      <blockquote style="border-left:3px solid var(--amber);margin:2em 0;padding:20px 28px;background:var(--amber-pale);border-radius:0 var(--radius) var(--radius) 0;font-style:italic;color:var(--slate-mid);">
         "I write to discover what I think. I publish to find out if I'm the only one who thinks it."
       </blockquote>
-
       <p>The name — Mariner's Memoir — comes from an image I've always found resonant: someone navigating open water, keeping a log not because they have all the answers, but because the act of recording forces clarity. That's what this is.</p>
-
-      <p>If something here is useful to you, I'd love to know. If something is wrong, I'd love to know even more.</p>
-
     </div>
-
-    <div style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
-      <a href="index.html#newsletter" class="btn btn--primary">Subscribe to the Memoir</a>
-      <a href="blog.html" class="btn btn--ghost">Read the writing</a>
+    <div style="margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="{{ '/#newsletter' | relative_url }}" class="btn btn--primary">Subscribe to the Memoir</a>
+      <a href="{{ '/blog.html' | relative_url }}" class="btn btn--ghost">Read the writing</a>
     </div>
   </div>
 </section>
 
-<!-- ── FEATURED ESSAYS ─────────────────────────────────────── -->
-<section class="section" style="background: var(--cream-dark); border-top: 1px solid var(--cream-border);">
+<!-- Featured Posts -->
+{% if site.posts.size > 0 %}
+<section class="section" style="background:var(--cream-dark);border-top:1px solid var(--cream-border);">
   <div class="container">
     <div class="section-header">
       <div class="section-header__left">
         <div class="section-label">Start here</div>
         <h2>Best of the Memoir</h2>
       </div>
-      <a href="blog.html">All writing →</a>
+      <a href="{{ '/blog.html' | relative_url }}">All writing &rarr;</a>
     </div>
-
     <div class="articles-grid">
-      <a href="post.html" class="article-card" style="text-decoration:none;">
+      {% for post in site.posts limit:3 %}
+      {% assign pcat = site.data.categories[post.category] %}
+      <a href="{{ post.url | relative_url }}" class="article-card" style="text-decoration:none;">
         <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
         </div>
         <div class="article-card__body">
-          <span class="article-card__tag">Leadership</span>
-          <div class="article-card__title">Why Most Nonprofit Leaders Are Solving the Wrong Problem</div>
-          <p class="article-card__excerpt">The efficiency trap — and how to escape it.</p>
+          <span class="article-card__tag">{{ pcat.label | default: post.category }}</span>
+          <div class="article-card__title">{{ post.title }}</div>
+          <p class="article-card__excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
           <div class="article-card__meta">
-            <span class="article-card__date">June 10, 2026</span>
-            <span class="article-card__read">8 min</span>
+            <span class="article-card__date">{{ post.date | date: "%B %-d, %Y" }}</span>
+            {% if post.read_time %}<span class="article-card__read">{{ post.read_time }}</span>{% endif %}
           </div>
         </div>
       </a>
-
-      <a href="post.html" class="article-card" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">AI &amp; Tech</span>
-          <div class="article-card__title">The Second Brain Trap: Why Capturing Everything Produces Nothing</div>
-          <p class="article-card__excerpt">Where the PKM system breaks down — and what to do instead.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">June 8, 2026</span>
-            <span class="article-card__read">12 min</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="post.html" class="article-card" style="text-decoration:none;">
-        <div class="article-card__image-placeholder">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9AACB8" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-        </div>
-        <div class="article-card__body">
-          <span class="article-card__tag">Opinion</span>
-          <div class="article-card__title">AI Won't Replace Leaders. Complacent Leaders Will.</div>
-          <p class="article-card__excerpt">The real threat the AI displacement debate keeps missing.</p>
-          <div class="article-card__meta">
-            <span class="article-card__date">May 28, 2026</span>
-            <span class="article-card__read">6 min</span>
-          </div>
-        </div>
-      </a>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
-<!-- ── NEWSLETTER ──────────────────────────────────────────── -->
+<!-- Newsletter -->
 <section class="section--sm" id="newsletter">
   <div class="container">
     <div class="newsletter">
-      <div class="section-label" style="color: var(--amber-light); margin-bottom: 12px;">Stay connected</div>
+      <div class="section-label" style="color:var(--amber-light);margin-bottom:12px;">Stay connected</div>
       <h2>Get new writing delivered</h2>
       <p>Essays, video commentary, and curated links — whenever something new is ready.</p>
       <form class="newsletter__form">
@@ -247,55 +162,3 @@
     </div>
   </div>
 </section>
-
-<!-- ── FOOTER ──────────────────────────────────────────────── -->
-<footer class="footer">
-  <div class="footer__inner">
-    <div class="footer__brand">
-      <a href="index.html" class="footer__logo">
-        <div class="footer__logo-mark">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5zm3-3H9v-1.5h6V13.5zm-.5-3H9.5C9.5 8.57 10.57 7.5 12 7.5s2.5 1.07 2.5 3z"/></svg>
-        </div>
-        <span class="footer__logo-text">Mariner's Memoir</span>
-      </a>
-      <p class="footer__tagline">Long-form thinking on leadership, AI, nonprofits, and ideas worth taking seriously.</p>
-    </div>
-    <div>
-      <div class="footer__col-title">Explore</div>
-      <div class="footer__links">
-        <a href="blog.html">All Writing</a>
-        <a href="blog.html">Leadership</a>
-        <a href="blog.html">Nonprofit</a>
-        <a href="blog.html">AI &amp; Technology</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer__col-title">Pages</div>
-      <div class="footer__links">
-        <a href="about.html">About</a>
-        <a href="index.html#newsletter">Subscribe</a>
-        <a href="#">Contact</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer__col-title">Connect</div>
-      <div class="footer__links">
-        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="#" target="_blank" rel="noopener">X / Twitter</a>
-        <a href="#">RSS Feed</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer__bottom">
-    <span>© 2026 Mariner's Memoir. All rights reserved.</span>
-    <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
-  </div>
-</footer>
-
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 15l7-7 7 7"/></svg>
-</button>
-
-<script src="main.js"></script>
-</body>
-</html>

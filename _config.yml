@@ -1,0 +1,26 @@
+title: "Mariner's Memoir"
+description: "Long-form thinking on leadership, AI, nonprofits, and ideas worth taking seriously."
+url: "https://shubhamspec-412.github.io"
+baseurl: "/mariners-memoir"
+
+author:
+  name: "Shubham Kumar"
+  tagline: "Leadership & Nonprofit Strategist"
+
+# Post URL structure
+permalink: /posts/:title/
+
+# Build
+markdown: kramdown
+highlighter: rouge
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+# GitHub Pages supported plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed

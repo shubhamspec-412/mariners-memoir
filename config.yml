@@ -1,0 +1,89 @@
+backend:
+  name: github
+  repo: shubhamspec-412/mariners-memoir
+  branch: main
+  auth_type: implicit
+  app_id: PASTE_YOUR_GITHUB_OAUTH_CLIENT_ID_HERE
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+
+  # ── Essays, Video Posts & Curated Links ──────────────────────
+  - name: "posts"
+    label: "Posts"
+    label_singular: "Post"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "The headline of your post."
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        default: ""
+
+      - label: "Post Type"
+        name: "post_type"
+        widget: "select"
+        options:
+          - { label: "Essay / Article", value: "essay" }
+          - { label: "Video + Commentary", value: "video" }
+          - { label: "Curated Link", value: "curated" }
+        default: "essay"
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Leadership", value: "leadership" }
+          - { label: "Nonprofit", value: "nonprofit" }
+          - { label: "AI & Tech", value: "ai" }
+          - { label: "Productivity", value: "productivity" }
+          - { label: "Opinion", value: "opinion" }
+          - { label: "Commentary", value: "commentary" }
+          - { label: "Video Analysis", value: "video" }
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        allow_add: true
+        hint: "e.g. Leadership, Strategy, AI"
+
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        hint: "Short summary shown on cards and in previews (1-2 sentences)."
+
+      - label: "Read Time"
+        name: "read_time"
+        widget: "string"
+        hint: "e.g. 8 min"
+        required: false
+
+      - label: "YouTube Video ID"
+        name: "youtube_id"
+        widget: "string"
+        required: false
+        hint: "Video posts only. The ID from the YouTube URL — e.g. dQw4w9WgXcQ from youtube.com/watch?v=dQw4w9WgXcQ"
+
+      - label: "External URL"
+        name: "external_url"
+        widget: "string"
+        required: false
+        hint: "Curated link posts only. Full URL of the external article."
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Write your post here. Supports full Markdown."
